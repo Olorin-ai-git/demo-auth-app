@@ -40,8 +40,7 @@ def test_validate_token():
 
     validated = svc.validate_token(token)
     assert validated is not None
-    # BUG: wrong expected role — bob is "user" not "admin"
-    assert validated["role"] == "admin"
+    assert validated["role"] == "user"
 
 
 def test_validate_invalid_token():
