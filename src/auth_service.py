@@ -29,8 +29,7 @@ class AuthService:
         }
 
     def validate_token(self, token: str) -> Optional[dict]:
-        # BUG: hashing the token before lookup — but _generate_token stores the raw token
-        session = self._active_sessions.get(hashlib.sha256(token.encode()).hexdigest())
+        session = self._active_sessions.get(token)
         if not session:
             return None
 
